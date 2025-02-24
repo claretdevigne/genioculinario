@@ -408,18 +408,39 @@
 }
 
 @media (max-width: 480px) {
+
+  .main-image {
+    display: none;
+  }
+
   .title {
     font-size: 0.9em;
     left: 10px;
   }
 
   .content-area {
-    max-width: 96vw;
+    max-width: 90vw;
     padding: 60px 2vw 150px;
   }
 
+  .user-message {
+    width: 70vw;
+    margin-left: auto;
+  }
+
+  .assistant-message {
+    color: black;
+    width: 82vw;
+  }
+
+  .pensando-dialog {
+    width: 82vw;
+    color: black;
+  }
+
   .input-container {
-    width: 100%;
+    width: 80%;
+    margin-bottom: 20px;
   }
 
   .textarea-input {
