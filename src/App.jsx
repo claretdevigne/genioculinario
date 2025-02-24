@@ -164,7 +164,7 @@ function App() {
             })
         }
 
-        <p className={loading ? "pensando-dialog" : "none"}>Pensando{loadingDots}</p>
+        <p className={loading ? "pensando-dialog" : "none"}>Cocinando{loadingDots}</p>
 
         
       </div>
@@ -198,7 +198,7 @@ function App() {
                   ?
                   "¡A cocinar!"
                   :
-                  "Cocinando".concat(loadingDots)
+                  "Detener"
               }
             </button>
             </div>
