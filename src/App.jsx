@@ -54,6 +54,10 @@ function App() {
 
   const handleOnSubmit = () => {
 
+    if (texto === "") {
+      return
+    }
+
     setFirstUse(false)
     
     const question = texto
@@ -120,6 +124,10 @@ function App() {
     })
   }
 
+  const handleStopSubmit = () => {
+    setLoading(false)
+  }
+
   const calculateRow = (key) => {
     let breaks = (texto + "\n").split("\n").length
     const maxLength = 5;
@@ -142,7 +150,7 @@ function App() {
       <HeaderBar/>
 
       <img src={MAIN_IMAGE} alt='GenioCulinario.com' className={firstUse ? 'main-image' : "none"} />
-      <div className='content-area'>
+      <div className={'content-area'}>
         { 
             context.map((message, key) => {
 
@@ -184,7 +192,7 @@ function App() {
           />
 
             <div className='button-container'>
-              <button disabled={loading} className='cook-button' onClick={handleOnSubmit}>
+              <button className='cook-button' onClick={loading ? handleStopSubmit : handleOnSubmit}>
               {
                 !loading 
                   ?

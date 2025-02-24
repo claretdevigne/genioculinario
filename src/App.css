@@ -1,219 +1,10 @@
-/* 
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  width: 100vw;
-  gap: 10px;
-  background-image: url('/images/fondo.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.header-bar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #bec6c1;
-  opacity: 0.9;
-  z-index: 10; 
-}
-
-.title {
-  color: #307f88;
-  font-size: clamp(1em, 4vw, 1.3em);
-  font-weight: bold;
-  position: fixed;
-  top: 15px;
-  left: 20px;
-  font-family: "playfair, frees";
-}
-
-.logo {
-  height: 100%;
-  margin-left: 20px;
-}
-
-.main-image {
-  width: 30vw;
-  margin: auto;
-  margin-top: 70px;
-}
-
-.content-area {
-  resize: none;
-  padding-top: 70px;
-  padding-bottom: 150px;
-  padding-left: clamp(10px, 20vw, 200px);
-  padding-right: clamp(10px, 20vw, 200px);
-  overflow: auto;
-  width: 100%;
-  max-width: 60vw;
-  height: auto;
-  border: none;
-  outline: none;
-  white-space: pre-line;
-  background-color: transparent;
-  font-family: "helvetica, arial";
-  font-weight: bold;
-  scrollbar-width: none;
-}
-
-.loading-text {
-  text-align: center;
-}
-
-.input-container {
-  position: fixed;
-  width: clamp(300px, 60%, 100%);
-  background-color: transparent;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.user-message {
-  background-color: lightskyblue;
-  border-radius: 20px;
-  padding: 0.1em 1em 0.1em 1em;
-  width: 70%;
-  height: auto;
-  max-width: 500px;
-  margin-left: auto;
-  margin-bottom: 2em;
-  margin-top: 2em;
-  box-shadow: 1px 1px 10px black;
-}
-
-.assistant-message {
-  background-color: white;
-  border-radius: 20px;
-  padding: 0.1em 1em 0.1em 1em;
-  width: 100%;
-  height: auto;
-  max-width: 700px;
-  box-shadow: 1px 1px 10px black;
-}
-
-.textarea-input {
-  resize: none;
-  border-radius: 20px;
-  padding-top: 10px;
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-weight: bold;
-  font-family: "helvetica";
-  font-size: clamp(0.9em, 2.5vw, 1em);
-  outline: none;
-  line-height: 1.4;
-  width: 100%;
-}
-
-.textarea-input::placeholder {
-  color: white;
-}
-
-.cook-button {
-  background-color: #51A5AF;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-}
-
-.cook-button:hover {
-  background-color: #68b4bd;
-  color: #01262b;
-  border: none;
-}
-
-.none {
-  display: none;
-}
-
-.textarea-container {
-  background-color: gray;
-  width: 100%;
-  padding: 0.5em 1em;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  margin: 1em;
-  margin-top: 0;
-}
-
-.button-container {
-  display: flex;
-  justify-content: end;
-  margin-bottom: 1em;
-}
-
-@media (max-width: 768px) {
-  .header-bar {
-    height: 50px;
-  }
-
-  .title {
-    font-size: 1em;
-    top: 10px;
-    left: 15px;
-  }
-
-  .content-area {
-    padding-left: 5vw;
-    padding-right: 5vw;
-    max-width: 90vw;
-    padding-top: 60px;
-  }
-
-  .input-container {
-    width: 90%;
-    padding: 0 5px;
-  }
-
-  .user-message,
-  .assistant-message {
-    width: 85%;
-    margin-left: 0;
-  }
-
-  .textarea-container {
-    margin: 0.5em;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 0.9em;
-    left: 10px;
-  }
-
-  .content-area {
-    padding-left: 2vw;
-    padding-right: 2vw;
-    max-width: 96vw;
-  }
-
-  .input-container {
-    width: 100%;
-  }
-
-  .textarea-input {
-    font-size: 0.9em;
-  }
-} */
-
-
 /* Global Layout */
+
+body {
+  background: url('/images/fondo.jpg') no-repeat center/cover fixed;
+  overflow: hidden;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -221,7 +12,6 @@
   min-height: 100vh;
   width: 100vw;
   gap: 10px;
-  background: url('/images/fondo.jpg') no-repeat center/cover fixed;
 }
 
 /* Header */
@@ -252,22 +42,22 @@
 /* Main Content */
 .main-image {
   width: 30vw;
-  margin: 70px auto 0;
+  padding-top: 100px;
 }
 
 .content-area {
+  position: fixed;
   width: 100%;
-  max-width: 60vw;
-  height: auto;
-  padding: 70px clamp(10px, 20vw, 200px) 150px;
+  max-width: 100vw;
+  height: calc(100vh - 190px);
+  padding: 80px 0 110px 0;
   font: bold 1em "Helvetica, Arial, sans-serif";
-  white-space: pre-line;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  overflow: visible;
-  resize: none;
-  scrollbar-width: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: lightskyblue transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .loading-text {
@@ -338,20 +128,22 @@
 /* Messages */
 .user-message {
   width: 70%;
-  max-width: 500px;
-  margin: 2em 0 2em auto;
+  max-width: 600px;
   padding: 0.1em 1em;
+  margin-right: 20%;
   background-color: lightskyblue;
   border-radius: 20px;
   box-shadow: 1px 1px 10px black;
   height: auto;
   font-family: Arial, Helvetica, sans-serif;
+  align-self: flex-end;
 }
 
 .assistant-message {
-  width: 100%;
-  max-width: 700px;
+  width: 70%;
+  max-width: 600px;
   padding: 0.1em 1em;
+  margin-left: 20%;
   background-color: white;
   border-radius: 20px;
   box-shadow: 1px 1px 10px black;
@@ -361,6 +153,7 @@
 .pensando-dialog {
   width: 100%;
   max-width: 700px;
+  margin: 2em auto 2em 20vw;
   padding: 1em 1em;
   background-color: white;
   border-radius: 20px;
@@ -419,18 +212,20 @@
   }
 
   .content-area {
-    max-width: 90vw;
-    padding: 60px 2vw 150px;
+    max-width: 100vw;
+    padding: 200px 0 0 0;
   }
 
   .user-message {
     width: 70vw;
     margin-left: auto;
+    align-self: flex-end;
   }
 
   .assistant-message {
     color: black;
-    width: 82vw;
+    width: 80vw;
+    margin-left: 10vw;
   }
 
   .pensando-dialog {
@@ -445,5 +240,7 @@
 
   .textarea-input {
     font-size: 0.9em;
+    height: 3em;
+    margin-bottom: 1em;;
   }
 }
