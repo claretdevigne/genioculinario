@@ -1,0 +1,10 @@
+- Que cuando se llene la fila del textArea automaticamente aparezca un segundo row en vez
+de el scrollBar, hasta alcanzar el máximo de rows que es 5.
+
+- Hacerlo mobile
+
+- Crear app para celular
+
+- cuando está la imagen main no debe hacer scroll
+
+- evitar que el markdown deje espacios de más
