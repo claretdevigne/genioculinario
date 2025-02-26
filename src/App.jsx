@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { HfInference } from '@huggingface/inference';
+import OpenAI from 'openai';
 import MAIN_IMAGE from '/images/main_image.png';
 import ReactMarkdown from 'react-markdown';
 
@@ -8,6 +8,8 @@ import HeaderBar from './components/header-bar/HeaderBar';
 
 function App() {
 
+  const client = new OpenAI({ apiKey: import.meta.env.VITE_OPENAI_TOKEN, dangerouslyAllowBrowser: true });
+  
   const [texto, setTexto] = useState('')
   const [row, setRow] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -52,7 +54,7 @@ function App() {
     intervalId = null
   }
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = async () => {
 
     if (texto === "") {
       return
@@ -63,65 +65,26 @@ function App() {
     const question = texto
     setTexto("")
     
-    const response = {
+    const userQuestion = {
       role: "user",
       content: question,
     }
 
-    const request = [...context]
-
-    if (request.length === 0) {
-      request.push({
-      role: "user",
-      content: reglas + question,
-    })
-    } else {
-      request.push({
-      role: "user",
-      content:question})
-    }
-
-    const newContext = context
-
-    newContext.push(response)
-    setContext(newContext)
-    
+    setContext(prev => [...prev, userQuestion])
     setLoading(true);
     startLoadingDots();
 
-    // eslint-disable-next-line no-undef
-    const client = new HfInference(import.meta.env.VITE_HF_TOKEN);
-
-    const stream = client.chatCompletion({
-      model: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-      messages: request,
-      temperature: 0.5,
-      max_tokens: 2024,
-      top_p: 0.7
+    const stream = await client.chat.completions.create({
+        model: 'gpt-4o-mini-2024-07-18',
+        messages: [
+          { role: 'system', content: reglas },
+          ...context
+        ]
     })
-    
-    stream
-    .then((res) => {
-      return res.choices[0].message.content
-    })
-    .then((res) => {
-      let marker = "</think>\n\n"
-      let answer = res.split(marker)[1]
-      
-      setLoading(false)
-      stopLoadingDots()
-      setFirstUse(false)
 
-      const answerContext = {
-        role: "assistant",
-        content: answer,
-      }
-
-      const newContext = context
-      newContext.push(answerContext)
-      setContext(newContext)
-
-    })
+    setContext(prev => [...prev, stream.choices[0].message])
+    setLoading(false)
+    stopLoadingDots()
   }
 
   const handleStopSubmit = () => {
